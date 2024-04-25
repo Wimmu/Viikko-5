@@ -1,31 +1,18 @@
-import {useAuthentication} from '../hooks/ApiHooks';
 import useForm from '../hooks/formHooks';
-import {useNavigate} from "react-router-dom";
+import Button from './UI/Button';
+import { useUserContext } from '../contexts/UserContext';
 
 // LoginForm.jsx
 const LoginForm = () => {
-  const navigate = useNavigate();
-  const {login} = useAuthentication();
+  const {handleLogin} = useUserContext()
 
   const initValues = {
     username: '',
     password: '',
   };
 
-  const doLogin = async () => {
-    console.log('doLogin', inputs);
-    try {
-      const userData = await login(inputs);
-      console.log('doLogin', userData);
-      localStorage.setItem('token', userData.token);
-      navigate('/');
-    } catch (e) {
-      alert(e.message);
-    }
-  };
-
   const {handleSubmit, handleInputChange, inputs} = useForm(
-    doLogin,
+    () => handleLogin(inputs),
     initValues,
   );
 
@@ -55,12 +42,7 @@ const LoginForm = () => {
             autoComplete="current-password"
           />
         </div>
-        <button className="
-          m-3 mt-0
-          p-3
-          rounded-lg
-          bg-blue-400 text-white
-        " type="submit">Login</button>
+        <Button text="Login" />
       </form>
     </>
   );

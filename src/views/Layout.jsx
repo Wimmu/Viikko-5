@@ -1,22 +1,16 @@
-import { Link, Outlet } from "react-router-dom"
+import {Outlet} from 'react-router-dom';
+import SiteNavigation from '../components/SiteNavigation';
 
 const Layout = () => (
   <div>
     <header>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/upload">Upload</Link>
-        <Link to="/login">Login</Link>
-      </nav>
+      <SiteNavigation />
     </header>
     <main>
       <Outlet />
     </main>
-    <footer className="m-12 text-xl">
-      Copyright 2024
-    </footer>
+    <footer className="m-12 text-xl">Copyright 2024</footer>
   </div>
-)
+);
 
-export default Layout
+export default Layout;
