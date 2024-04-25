@@ -12,7 +12,12 @@ const SingleView = (props) => {
       open={selectedItem ? true : false}
     >
       <p>
-        <Button text="Close" handleClick={handleClick} />
+        <Button className="
+          m-3 mt-0
+          p-3
+          rounded-lg
+          bg-blue-400 text-white
+        " text="Close" handleClick={handleClick} />
       </p>
       {selectedItem && (
         <>
